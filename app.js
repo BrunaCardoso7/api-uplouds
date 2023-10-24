@@ -1,8 +1,11 @@
 const express = require('express')
 const app = express()
+const EventEmitter = require('events');
 const cors = require('cors')
 
 app.use(cors())
+
+EventEmitter.setMaxListeners(20); // Defina um limite maior (por exemplo, 20) se necessário
 
 require("dotenv").config()
 
