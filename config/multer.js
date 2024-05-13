@@ -3,16 +3,16 @@ import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import { v2 as cloudinary } from 'cloudinary';
           
 cloudinary.config({ 
-  cloud_name: 'djleslzyt', 
-  api_key: '683383817317257', 
-  api_secret: 'YPb4XUTbqmFZIA6ftsOt7DCyEP4' 
+  cloud_name: 'dcezopogd', 
+  api_key: '554937882793472', 
+  api_secret: 'ryTyn3wz0KxGrGQkuVehD5HMMIw' 
 });
 
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: 'uploads', // Pasta onde os arquivos serão armazenados no Cloudinary
-    allowed_formats: ['jpg', 'png', 'jpeg', 'gif'], // Formatos de arquivo permitidos
+    folder: 'uploads',
+    allowed_formats: ['jpg', 'png', 'jpeg', 'gif'],
   },
 });
 

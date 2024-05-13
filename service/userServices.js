@@ -10,7 +10,7 @@ export async function createuser (nome, email, senha) {
 
         return user
     } catch (error) {
-        console.error(error)
+        return res.status(400).send({msg: 'algo deu errado', error})
     }
 }
 export async function findEmail (email) {
@@ -21,6 +21,6 @@ export async function findEmail (email) {
         }
         return user
     } catch (error) {
-        console.error(error)
+        return res.status(400).send({msg: 'algo deu errado', error})
     }
 }
