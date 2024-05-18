@@ -11,7 +11,7 @@ const Restaurante = sequelize.define('restaurante', {
         defaultValue: () => v4()
     },
     user_id: {
-        type: DataTypes.STRING,
+        type: DataTypes.UUID,
         allowNull: false,
         references: {
             model: User,

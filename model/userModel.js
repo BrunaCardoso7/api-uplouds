@@ -10,7 +10,7 @@ const User = sequelize.define('users', {
         defaultValue: () => v4()
     },
     nome: {
-        type: DataTypes.STRING,
+        type: DataTypes.UUID,
         allowNull: false
     },
     email: {

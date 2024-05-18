@@ -1,10 +1,10 @@
 import { Sequelize } from 'sequelize'
 
 const sequelize = new Sequelize(
-    'yumyelp', 'brunadev', 'bruna8596@',{
-        host: '127.0.0.1',
+    'railway', 'root', 'fgoKCtWObeeMQpkLnzCenNRnCGWtitRS',{
+        host: 'monorail.proxy.rlwy.net',
         dialect: 'mysql',
-        port: 3306
+        port: 34338
     }
 )
 
