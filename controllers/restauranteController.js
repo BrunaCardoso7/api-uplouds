@@ -36,3 +36,11 @@ export async function updateRestaurantes (req, res) {
         return res.status(400).send({msg: 'algo deu errado', error})
     }
 }
+
+export async function getUsers(req, res) {
+    try {
+        
+    } catch (error) {
+        return res.status(500).send({msg: 'não foi possível carregar os dados'})
+    }
+}
