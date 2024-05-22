@@ -4,10 +4,15 @@ export async function create (req, res) {
     try {
         const { nome, descricao, endereco } = req.body
         const imagem =  req.file? req.file.path : undefined
-        const user_id = '2c461f43-e3f9-40da-8b10-0fa7e16f7a38'
+        const user_id = '3c5a5ca0-0526-4292-82ff-3b9ef94b870e'
 
+        
         const retaurante = await createService(nome, descricao, endereco, imagem, user_id)
-
+        console.log(imagem)
+        if(!retaurante) {
+            return res.status(200).json({ message: 'algo deu errado'})
+        }
+        console.log(retaurante)
         return res.status(200).json({ message: 'Você está pronto para compartilhar seus pratos', retaurante});
     } catch (error) {
         return res.status(400).send({msg: 'algo deu errado', error})
