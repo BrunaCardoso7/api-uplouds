@@ -6,9 +6,9 @@ export async function create (req, res) {
         const imagem =  req.file? req.file.path : undefined
         const user_id = '3c5a5ca0-0526-4292-82ff-3b9ef94b870e'
 
+        console.log("dados da requisição: ", nome, descricao, endereco, imagem)
         
         const retaurante = await createService(nome, descricao, endereco, imagem, user_id)
-        console.log(imagem)
         if(!retaurante) {
             return res.status(200).json({ message: 'algo deu errado'})
         }

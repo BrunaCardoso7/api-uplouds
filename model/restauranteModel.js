@@ -3,7 +3,7 @@ import sequelize from "../db.js";
 import { v4 } from "uuid";
 import User from "./userModel.js";
 
-const Restaurante = sequelize.define('restaurante', {
+const Restaurante = sequelize.define('restaurantes', {
     id: {
         type: DataTypes.UUID,
         primaryKey: true,
