@@ -13,8 +13,6 @@ export async function createUserController (req, res) {
             console.log('ta faltando dados')
         }
 
-        const tokenPrivate = JwtService.generateToken({email})
-
         const user = await createuser(nome, email, secretPass, tipo)
         
         return res.status(200).send({msg: 'usuario cadastrado com sucesso', user, tokenPrivate})
