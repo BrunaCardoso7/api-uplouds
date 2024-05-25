@@ -1,7 +1,8 @@
 import Restaurante from "../model/restauranteModel.js"
+import User from "../model/userModel.js"
 
 
-export async function createService (nome, decricao, endereco, imagem, user_id) {
+export async function createService (nome, decricao, endereco, imagem, user_id, categoria) {
     try {
         const restaurante = await Restaurante.create({
             nome: nome,
@@ -45,6 +46,22 @@ export async function UpdateRestarantesService (id, nome, descricao, endereco, i
         console.log('Restaurante atualizado com sucesso');
 
         return restaurante
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export async function DeleteRestauranteService(id) {
+    try {
+        const findedRestaurante = await Restaurante.findByPk(id)
+
+        if (!findedRestaurante) {
+            throw new Error('Restaurante not found');
+        }
+
+        await findedRestaurante.destroy()
+
+        return findedRestaurante;
     } catch (error) {
         console.error(error)
     }

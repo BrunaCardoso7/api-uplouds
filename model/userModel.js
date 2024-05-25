@@ -20,6 +20,11 @@ const User = sequelize.define('users', {
     senha: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    tipo: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: "user"
     }
 })
 

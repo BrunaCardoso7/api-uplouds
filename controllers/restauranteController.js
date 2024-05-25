@@ -1,14 +1,15 @@
-import { UpdateRestarantesService, createService, getRestarantesService } from "../service/restauranteService.js";
+import { DeleteRestauranteService, UpdateRestarantesService, createService, getRestarantesService } from "../service/restauranteService.js";
 
 export async function create (req, res) {
     try {
-        const { nome, descricao, endereco } = req.body
+        const { nome, descricao, endereco, categoria } = req.body
         const imagem =  req.file? req.file.path : undefined
         const user_id = '3c5a5ca0-0526-4292-82ff-3b9ef94b870e'
 
-        console.log("dados da requisição: ", nome, descricao, endereco, imagem)
+        console.log("dados da requisição: ", nome, descricao, endereco, imagem, categoria)
         
-        const retaurante = await createService(nome, descricao, endereco, imagem, user_id)
+        const retaurante = await createService(nome, descricao, endereco, imagem, user_id, categoria)
+        
         if(!retaurante) {
             return res.status(200).json({ message: 'algo deu errado'})
         }
@@ -42,10 +43,18 @@ export async function updateRestaurantes (req, res) {
     }
 }
 
-export async function getUsers(req, res) {
+export async function DeleteRestaurante (req, res) {
     try {
-        
+        const { id } = req.body
+
+        if(!id) {
+            return res.status(400).send({msg: 'id não foi enviado'})
+        }
+
+        const restauranteDeleted = await DeleteRestauranteService(id)
+
+        return restauranteDeleted
     } catch (error) {
-        return res.status(500).send({msg: 'não foi possível carregar os dados'})
+        return res.status(400).send({msg: 'algo deu errado', error})
     }
 }

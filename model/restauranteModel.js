@@ -22,6 +22,11 @@ const Restaurante = sequelize.define('restaurantes', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    categoria: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: "undefined"
+    },
     endereco: {
         type: DataTypes.STRING,
         allowNull: false

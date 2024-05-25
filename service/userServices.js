@@ -1,11 +1,17 @@
 import User from "../model/userModel.js";
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv'
+dotenv.config()
 
-export async function createuser (nome, email, senha) {
+const secret = process.env.SECRET 
+
+export async function createuser (nome, email, senha, tipo) {
     try {
         const user = await User.create({
             nome: nome,
             email: email,
-            senha: senha
+            senha: senha,
+            tipo: tipo
         })
 
         return user
@@ -22,5 +28,22 @@ export async function findEmail (email) {
         return user
     } catch (error) {
         return res.status(400).send({msg: 'algo deu errado', error})
+    }
+}
+export const generateToken = (id) => jwt.sign({id: id}, secret, {expiresIn: 86400}) 
+
+export async function findByIdService (id) {
+    try {
+        const user = await User.findByPk(id)
+
+        if(!user) {
+            console.log('usuario não encontrados')
+        }
+
+        console.log('usuario autenticado com sucesso');
+
+        return user
+    } catch (error) {
+        console.error(error)
     }
 }
