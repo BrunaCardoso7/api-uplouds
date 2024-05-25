@@ -15,7 +15,7 @@ export async function createUserController (req, res) {
 
         const user = await createuser(nome, email, secretPass, tipo)
         
-        return res.status(200).send({msg: 'usuario cadastrado com sucesso', user, tokenPrivate})
+        return res.status(200).send({msg: 'usuario cadastrado com sucesso', user})
     } catch (error) {
         console.error(error)
     }
