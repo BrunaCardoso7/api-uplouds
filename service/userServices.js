@@ -16,7 +16,7 @@ export async function createuser (nome, email, senha, tipo) {
 
         return user
     } catch (error) {
-        return res.status(400).send({msg: 'algo deu errado', error})
+        return console.error(error)
     }
 }
 export async function findEmail (email) {
@@ -27,7 +27,7 @@ export async function findEmail (email) {
         }
         return user
     } catch (error) {
-        return res.status(400).send({msg: 'algo deu errado', error})
+        return console.error(error)
     }
 }
 export const generateToken = (id) => jwt.sign({id: id}, secret, {expiresIn: 86400}) 
