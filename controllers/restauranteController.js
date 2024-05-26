@@ -4,7 +4,7 @@ export async function create (req, res) {
     try {
         const { nome, descricao, endereco, categoria } = req.body
         const imagem =  req.file? req.file.path : undefined
-        const user_id = req.params
+        const user_id = req.query.user_id;
 
         console.log("dados da requisição: ", nome, descricao, endereco, imagem, categoria)
         
