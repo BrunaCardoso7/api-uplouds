@@ -1,4 +1,4 @@
-import { DeleteRestauranteService, UpdateRestarantesService, createService, getRestarantesService } from "../service/restauranteService.js";
+import { DeleteRestauranteService, UpdateRestarantesService, createService, getByIdService, getRestarantesService } from "../service/restauranteService.js";
 
 export async function create (req, res) {
     try {
@@ -54,6 +54,17 @@ export async function DeleteRestaurante (req, res) {
         const restauranteDeleted = await DeleteRestauranteService(id)
 
         return restauranteDeleted
+    } catch (error) {
+        return res.status(400).send({msg: 'algo deu errado', error})
+    }
+}
+export async function getByIdRestaurante (req, res) {
+    try {
+        const { id } = req.params
+
+        const restaurante = await getByIdService(id) 
+
+        return res.status(200).send(restaurante)
     } catch (error) {
         return res.status(400).send({msg: 'algo deu errado', error})
     }

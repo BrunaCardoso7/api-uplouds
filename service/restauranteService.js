@@ -66,3 +66,12 @@ export async function DeleteRestauranteService(id) {
         console.error(error)
     }
 }
+export async function getByIdService(id) {
+    try {
+        const findedRestaurante = await Restaurante.findByPk(id)
+
+        return findedRestaurante;
+    } catch (error) {
+        console.error(error)
+    }
+}
