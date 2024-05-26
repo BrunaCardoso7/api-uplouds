@@ -8,8 +8,8 @@ import UserHasRestauranteMiddleware from '../middleware/userhasrestaurante.js'
 const restauranteRouter = express.Router()
 
 restauranteRouter.post('/create', upload.single('file'), create)
+restauranteRouter.get('/get', UserHasRestauranteMiddleware, getRestarantesByid)
 restauranteRouter.get('/', getRestarantes)
-restauranteRouter.get('/', UserHasRestauranteMiddleware, getRestarantesByid)
 restauranteRouter.patch('/update', upload.single('file'),updateRestaurantes)
 restauranteRouter.delete('/delete', DeleteRestaurante)
 restauranteRouter.get('/:id', getByIdRestaurante)
