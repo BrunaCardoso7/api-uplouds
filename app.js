@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import userRoute from './routes/userRoutes.js'
 import restauranteRouter from './routes/restauranteRouter.js'
+import produtoRouter from './routes/produtoRouter.js'
 
 const app = express()
 
@@ -19,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/user', userRoute)
 app.use('/rest', restauranteRouter)
+app.use('/prod', produtoRouter)
 
 const port = process.env.PORT || 3000
 
