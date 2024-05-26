@@ -4,18 +4,18 @@ export async function createProduto(req, res) {
     try {
         const { nome, preco } = req.body;
         const imagem = req.file ? req.file.path : undefined;
-        const user_id = req.query.user_id; // Extrair user_id dos parâmetros da query
+        const rest_id = req.query.rest_id; 
 
-        if (!nome || !preco || !imagem || !user_id) {
-            console.log(nome, preco, imagem, user_id);
+        if (!nome || !preco || !imagem || !rest_id) {
+            console.log(nome, preco, imagem, rest_id);
             return res.status(400).send({ msg: 'Falta dados' });
         }
 
-        const produto = await createProdutoService(nome, preco, imagem, user_id);
+        const produto = await createProdutoService(nome, preco, imagem, rest_id);
 
         return res.status(200).send(produto);
     } catch (error) {
-        console.error(error); // Registrar o erro
+        console.error(error); 
         return res.status(500).send({ msg: "Algo deu errado na sua requisição", error });
     }
 }
@@ -26,7 +26,7 @@ export async function getProdutos (req, res) {
 
         return res.status(200).send({produtos})
     } catch (error) {
-        console.error(error); // Registrar o erro
+        console.error(error); 
         return res.status(500).send({ msg: "Algo deu errado na sua requisição", error });
     }
 }   
