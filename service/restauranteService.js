@@ -1,6 +1,6 @@
-import Restaurante from "../model/restauranteModel.js"
-import User from "../model/userModel.js"
-
+// import Restaurante from "../model/restauranteModel.js"
+// import User from "../model/userModel.js"
+import { User, Restaurante } from '../model/associations.js';
 
 
 export async function createService (nome, decricao, endereco, imagem, user_id, categoria) {
@@ -74,5 +74,33 @@ export async function getByIdService(id) {
         return findedRestaurante;
     } catch (error) {
         console.error(error)
+    }
+}
+export async function getuserHasRestaurante(userId) {
+    try {
+
+        console.log(userId, "teste")
+        const user = await User.findByPk(userId, {
+            include: {
+                model: Restaurante,
+                as: 'restaurante'
+            }
+        });
+        
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+        console.log()
+        
+        const restauranteInfo = user.restaurante;
+
+        return {
+            hasRestaurante: restauranteInfo !== null,
+            restauranteInfo: restauranteInfo
+        };
+    } catch (error) {
+        console.error(error);
+        throw error;
     }
 }
