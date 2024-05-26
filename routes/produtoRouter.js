@@ -4,7 +4,7 @@ import upload from '../config/multer.js'
 
 const produtoRouter = express.Router()
 
-produtoRouter.post('/create/:id', upload.single('file'), createProduto)
+produtoRouter.post('/create/', upload.single('file'), createProduto)
 produtoRouter.get('/', getProdutos)
 produtoRouter.patch('/update/:id', upload.single('file'), updateProduto)
 produtoRouter.delete('/:id', )
