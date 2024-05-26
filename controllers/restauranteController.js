@@ -22,6 +22,15 @@ export async function create (req, res) {
 
 export async function getRestarantes (req, res) {
     try {
+        const restaurante = await getRestarantesService()
+
+        return res.status(200).send({msg: 'essa é a sua lista de restaurantes', restaurante})
+    } catch (error) {
+        throw error
+    }
+}
+export async function getRestarantesByid (req, res) {
+    try {
         
         const hasRestaurante = req.hasRestaurante
         const restInfo = req.restauranteInfo
@@ -33,12 +42,8 @@ export async function getRestarantes (req, res) {
             return res.status(200).json({ message: "não tem restaurante" });
         }
 
-        // const restaurante = await getRestarantesService()
-
-        // return res.status(200).send({msg: 'essa é a sua lista de restaurantes', restaurante})
     } catch (error) {
         throw error
-        res.status(400).send({msg: 'algo deu errado', error})
     }
 }
 export async function updateRestaurantes (req, res) {
