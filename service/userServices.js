@@ -47,3 +47,12 @@ export async function findByIdService (id) {
         console.error(error)
     }
 }
+export async function getUserByIdService(id) {
+    try {
+        const findedUser = await User.findByPk(id)
+
+        return findedUser;
+    } catch (error) {
+        console.error(error)
+    }
+}

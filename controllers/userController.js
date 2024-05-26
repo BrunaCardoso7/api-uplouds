@@ -1,5 +1,5 @@
 import express from 'express'
-import { createuser, findEmail, generateToken } from '../service/userServices.js'
+import { createuser, findEmail, generateToken, getUserByIdService } from '../service/userServices.js'
 import {hash, compare} from 'bcrypt'
 
 export async function createUserController (req, res) {
@@ -37,6 +37,16 @@ export async function loginUserController (req, res) {
         }
 
         return res.status(200).send({msg: 'usuario logado com sucesso', user, tokenPrivate})
+    } catch (error) {
+        console.error(error)
+    }
+}
+export async function userById(req, res) {
+    try {
+        const id = req.params.id
+        const user = await getUserByIdService(id)
+
+        return res.status(200).send({user})
     } catch (error) {
         console.error(error)
     }
