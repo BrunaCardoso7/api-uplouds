@@ -47,7 +47,7 @@ export async function updateProduto (req, res) {
 }
 export async function deleteProduto (req, res) {
     try {
-        const id = req.params.id
+        const {id} = req.body
 
         const produto  = await DeleteProdutoService(id)
 

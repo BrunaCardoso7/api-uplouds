@@ -9,6 +9,7 @@ export async function createService (nome, decricao, endereco, imagem, user_id, 
             nome: nome,
             endereco: endereco,
             descricao: decricao,
+            categoria: categoria,
             imagem: imagem,
             user_id: user_id
         })
@@ -54,15 +55,15 @@ export async function UpdateRestarantesService (id, nome, descricao, endereco, i
 
 export async function DeleteRestauranteService(id) {
     try {
-        const findedRestaurante = await Restaurante.findByPk(id)
+        const finddedRest = await Restaurante.findByPk(id)
 
-        if (!findedRestaurante) {
-            throw new Error('Restaurante not found');
+        if (!finddedRest) {
+            throw new Error('Produto not found');
         }
 
-        await findedRestaurante.destroy()
+        await finddedRest.destroy()
 
-        return findedRestaurante;
+        return finddedRest;
     } catch (error) {
         console.error(error)
     }

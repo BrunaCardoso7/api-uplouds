@@ -64,13 +64,9 @@ export async function DeleteRestaurante (req, res) {
     try {
         const { id } = req.body
 
-        if(!id) {
-            return res.status(400).send({msg: 'id não foi enviado'})
-        }
+        const produto  = await DeleteRestauranteService(id)
 
-        const restauranteDeleted = await DeleteRestauranteService(id)
-
-        return restauranteDeleted
+        return res.status(200).send({msg: 'deletado com sucesso: ', produto})
     } catch (error) {
         return res.status(400).send({msg: 'algo deu errado', error})
     }
